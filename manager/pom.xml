@@ -17,7 +17,6 @@
         <module>manager-dao</module>
         <module>manager-interface</module>
         <module>manager-service</module>
-        <module>manager-web</module>
     </modules>
 
     <dependencies>

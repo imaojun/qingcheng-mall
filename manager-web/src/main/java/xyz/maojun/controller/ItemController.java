@@ -5,13 +5,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import xyz.maojun.pojo.TbItem;
+import xyz.maojun.pojo.*;
 import xyz.maojun.service.ItemService;
+
+import javax.annotation.Resource;
 
 @Controller
 public class ItemController {
 
-    @Autowired
+    @Resource
     private ItemService itemService;
 
 
