@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import xyz.maojun.common.pojo.EasyUIDateGridResult;
 import xyz.maojun.pojo.*;
 import xyz.maojun.service.ItemService;
 
@@ -17,12 +18,18 @@ public class ItemController {
     private ItemService itemService;
 
 
-    @RequestMapping("/list/{itemId}")
+    @RequestMapping("/item/{itemId}")
     @ResponseBody
     public TbItem getItemById(@PathVariable long itemId){
         TbItem tbItem = itemService.getItemById(itemId);
         return tbItem;
+    }
 
+    @RequestMapping("/item/list")
+    @ResponseBody
+    public EasyUIDateGridResult getItemList(Integer page, int rows){
+        EasyUIDateGridResult result =itemService.getItemList(page,rows);
+        return result;
     }
 
 

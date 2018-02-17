@@ -1,7 +1,10 @@
 package xyz.maojun.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import xyz.maojun.common.pojo.EasyUIDateGridResult;
 import xyz.maojun.mapper.TbItemMapper;
 import xyz.maojun.pojo.TbItem;
 import xyz.maojun.pojo.TbItemExample;
@@ -29,6 +32,20 @@ public class ItemServiceImpl implements ItemService {
         if (list != null && list.size() > 0) {
             return list.get(0);
         }
-        return  null;
+        return null;
+    }
+
+    @Override
+    public EasyUIDateGridResult getItemList(int page, int rows) {
+        PageHelper.startPage(page,rows);
+        TbItemExample example = new TbItemExample();
+        List<TbItem> list = tbItemMapper.selectByExample(example);
+
+        EasyUIDateGridResult result = new EasyUIDateGridResult();
+        result.setRows(list);
+        PageInfo<TbItem> pageInfo = new PageInfo<>(list);
+        long total= pageInfo.getTotal();
+        result.setTotal(total);
+        return result;
     }
 }
