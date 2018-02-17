@@ -12,7 +12,7 @@ public class PageController {
     }
 
     @RequestMapping("/{page}")
-    public String showPage(@PathVariable("page") String pages){
+    public String showPage(@PathVariable(value = "page") String pages){
         return pages;
     }
 }
