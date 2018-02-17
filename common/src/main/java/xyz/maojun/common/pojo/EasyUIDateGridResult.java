@@ -3,7 +3,7 @@ package xyz.maojun.common.pojo;
 import java.io.Serializable;
 import java.util.List;
 
-public class EasyUIDateGridResult implements Serializablke {
+public class EasyUIDateGridResult implements Serializable{
     private long total;
     private List rows;
 
