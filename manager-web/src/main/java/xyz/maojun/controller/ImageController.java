@@ -1,6 +1,7 @@
 package xyz.maojun.controller;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,7 +17,7 @@ public class ImageController {
     @Value("${IMAGE_URL_SERVER}")
     private String IMAGE_URL;
 
-    @RequestMapping("/pic/upload")
+    @RequestMapping(value = "/pic/upload",produces = MediaType.TEXT_PLAIN_VALUE+";charset=utf-8")
     @ResponseBody
     public String uploadFile(MultipartFile uploadFile) {
 
