@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import xyz.maojun.common.util.FastDFSClient;
+import xyz.maojun.common.util.JsonUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +18,7 @@ public class ImageController {
 
     @RequestMapping("/pic/upload")
     @ResponseBody
-    public Map uploadFile(MultipartFile uploadFile) {
+    public String uploadFile(MultipartFile uploadFile) {
 
         try {
             FastDFSClient fastDFSClient = new FastDFSClient("E:\\egouMall\\manager-web\\src\\main\\resources\\properties\\client.properties");
@@ -28,13 +29,13 @@ public class ImageController {
             Map result = new HashMap<>();
             result.put("error", 0);
             result.put("url", url);
-            return result;
+            return JsonUtils.objectToJson(result);
         } catch (Exception e) {
             e.printStackTrace();
             Map result = new HashMap<>();
             result.put("error", 1);
             result.put("message", "image upload failure");
-            return result;
+            return JsonUtils.objectToJson(result);
         }
     }
 }
