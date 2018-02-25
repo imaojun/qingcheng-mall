@@ -26,7 +26,7 @@
                     address="172.20.10.13:2181"/>
     <!-- 声明需要暴露的服务接口 -->
     <!-- 配置dubbo注解识别处理器，不指定包名的话会在spring bean中查找对应实例的类配置了dubbo注解的 -->
-    <!--<dubbo:reference interface="xyz.maojun.service.ItemService" id="itemService"/>-->
+    <dubbo:reference interface="xyz.maojun.content.service.ContentService" id="contentService"/>
 
 
 </beans>

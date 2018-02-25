@@ -18,6 +18,11 @@
             <artifactId>manager-interface</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>xyz.maojun.egou</groupId>
+            <artifactId>content-interface</artifactId>
+            <version>1.0</version>
+        </dependency>
 
         <!-- 连接池 -->
         <dependency>

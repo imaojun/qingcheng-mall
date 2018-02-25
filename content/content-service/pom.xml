@@ -87,6 +87,11 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
+        <dependency>
+            <groupId>xyz.maojun.egou</groupId>
+            <artifactId>content-interface</artifactId>
+            <version>1.0</version>
+        </dependency>
 
     </dependencies>
 

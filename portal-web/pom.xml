@@ -13,6 +13,11 @@
 
     <artifactId>portal-web</artifactId>
     <dependencies>
+        <dependency>
+            <groupId>xyz.maojun.egou</groupId>
+            <artifactId>content-interface</artifactId>
+            <version>1.0</version>
+        </dependency>
         <!-- 连接池 -->
         <dependency>
             <groupId>com.alibaba</groupId>

@@ -39,6 +39,8 @@
     <!-- 配置dubbo注解识别处理器，不指定包名的话会在spring bean中查找对应实例的类配置了dubbo注解的 -->
     <dubbo:reference interface="xyz.maojun.service.ItemService" id="itemService"/>
     <dubbo:reference interface="xyz.maojun.service.ItemCatService" id="itemCatService"/>
+    <dubbo:reference interface="xyz.maojun.content.service.ContentCategoryService" id="contentCategoryService"/>
+    <dubbo:reference interface="xyz.maojun.content.service.ContentService" id="contentService"/>
 
 
 </beans>
