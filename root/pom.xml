@@ -12,6 +12,7 @@
         <module>../common</module>
         <module>../manager</module>
         <module>../manager-web</module>
+        <module>../portal-web</module>
     </modules>
 
 
