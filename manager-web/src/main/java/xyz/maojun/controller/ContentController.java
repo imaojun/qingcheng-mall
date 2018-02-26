@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 
 @Controller
 public class ContentController {
-    @Resource
+    @Autowired
     private ContentService contentService;
 
     @RequestMapping(value = "/content/save", method = RequestMethod.POST)
