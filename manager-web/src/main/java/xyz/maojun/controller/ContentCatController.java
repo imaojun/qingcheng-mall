@@ -16,7 +16,7 @@ import java.util.List;
 @Controller
 public class ContentCatController {
 
-   @Resource
+   @Autowired
    private ContentCategoryService contentCategoryService;
     @RequestMapping("/content/category/list")
     @ResponseBody
