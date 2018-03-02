@@ -11,10 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>common</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>../content</module>
-    </modules>
+
 
     <dependencies>
         <!-- 时间操作组件 -->
