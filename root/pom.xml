@@ -14,6 +14,7 @@
         <module>../manager-web</module>
         <module>../portal-web</module>
         <module>../search</module>
+        <module>../search-web</module>
     </modules>
 
 

@@ -20,7 +20,7 @@
         <!--依赖interface模块-->
         <dependency>
             <groupId>xyz.maojun.egou</groupId>
-            <artifactId>manager-interface</artifactId>
+            <artifactId>content-interface</artifactId>
             <version>1.0</version>
         </dependency>
         <!-- Spring -->

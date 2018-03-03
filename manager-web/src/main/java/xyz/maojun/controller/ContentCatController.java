@@ -16,8 +16,9 @@ import java.util.List;
 @Controller
 public class ContentCatController {
 
-   @Autowired
+   @Resource
    private ContentCategoryService contentCategoryService;
+
     @RequestMapping("/content/category/list")
     @ResponseBody
     public List<EasyUITreeNode> getContentCatList(@RequestParam(value = "id", defaultValue = "0") long parentID) {

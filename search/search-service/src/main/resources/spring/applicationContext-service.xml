@@ -20,7 +20,6 @@
     <!-- 用dubbo协议在20880端口暴露服务 -->
     <dubbo:protocol name="dubbo" port="20882"/>
     <!-- 声明需要暴露的服务接口 -->
-    <dubbo:service interface="xyz.maojun.content.service.ContentCategoryService" ref="contentCategoryServiceImpl"  timeout="600000"/>
-    <dubbo:service interface="xyz.maojun.content.service.ContentService" ref="contentServiceImpl"  timeout="600000"/>
+    <dubbo:service interface="xyz.maojun.search.service.SearchItemService" ref="searchItemServiceImpl"  timeout="600000"/>
 
 </beans>
