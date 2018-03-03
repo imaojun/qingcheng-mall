@@ -11,7 +11,7 @@
         http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">
 
     <!-- 配置包扫描器，扫描所有带@Service注解的类 -->
-    <context:component-scan base-package="xyz.maojun.search.service"/>
+    <context:component-scan base-package="xyz.maojun.search.service,xyz.maojun.search.dao"/>
     <!-- 使用dubbo发布服务 -->
     <!-- 提供方应用信息，用于计算依赖关系 -->
     <dubbo:application name="search"/>
@@ -21,5 +21,6 @@
     <dubbo:protocol name="dubbo" port="20882"/>
     <!-- 声明需要暴露的服务接口 -->
     <dubbo:service interface="xyz.maojun.search.service.SearchItemService" ref="searchItemServiceImpl"  timeout="600000"/>
+    <dubbo:service interface="xyz.maojun.search.service.SearchService" ref="searchServiceImpl"  timeout="600000"/>
 
 </beans>

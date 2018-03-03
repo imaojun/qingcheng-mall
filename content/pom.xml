@@ -33,7 +33,7 @@
                 <version>2.2</version>
                 <configuration>
                     <path>/</path>
-                    <port>8084</port>
+                    <port>8083</port>
                 </configuration>
             </plugin>
 

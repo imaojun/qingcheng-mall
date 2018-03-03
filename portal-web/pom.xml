@@ -139,7 +139,7 @@
                 <version>2.2</version>
                 <configuration>
                     <path>/</path>
-                    <port>8083</port>
+                    <port>8082</port>
                 </configuration>
             </plugin>
 
