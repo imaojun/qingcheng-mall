@@ -1,6 +1,8 @@
 package xyz.maojun.common.pojo;
 
-public class SearchItem {
+import java.io.Serializable;
+
+public class SearchItem implements Serializable{
      private String id;
      private String title;
      private String sell_point;
@@ -54,5 +56,13 @@ public class SearchItem {
 
     public void setCategory_name(String category_name) {
         this.category_name = category_name;
+    }
+
+    public String[] getImages(){
+        if (image != null && !"".equals(image)) {
+            String[] split = image.split(",");
+            return split;
+        }
+        return null;
     }
 }

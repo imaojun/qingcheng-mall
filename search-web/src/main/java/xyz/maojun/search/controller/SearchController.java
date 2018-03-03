@@ -1,6 +1,5 @@
 package xyz.maojun.search.controller;
 
-import org.jboss.netty.util.internal.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import xyz.maojun.common.pojo.SearchResult;
 import xyz.maojun.search.service.SearchService;
 
-import javax.annotation.Resource;
 
 @Controller
 public class SearchController {
@@ -22,6 +20,7 @@ public class SearchController {
 
     @RequestMapping("/search")
     public String searchItemList(String keyword, @RequestParam(defaultValue = "1") Integer page, Model model) throws Exception {
+        keyword = new String(keyword.getBytes("iso-8859-1"), "UTF-8");
         SearchResult searchResult = searchService.search(keyword, page, SEARCH_RESULT_ROWS);
         model.addAttribute("query", keyword);
         model.addAttribute("totalPages", searchResult.getTotalPages());
