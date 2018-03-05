@@ -27,6 +27,7 @@ public class SearchController {
         model.addAttribute("page", page);
         model.addAttribute("recourdCount", searchResult.getRecordCount());
         model.addAttribute("itemList", searchResult.getItemList());
+        int a = 1 / 0;
         return "search";
     }
 
