@@ -9,7 +9,7 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">
 
-    <context:component-scan base-package="xyz.maojun.portal.controller"/>
+    <context:component-scan base-package="xyz.maojun.item.controller"/>
     <!-- 加载配置文件 -->
     <context:property-placeholder location="classpath:properties/imageurl.properties" />
     <mvc:annotation-driven/>
@@ -21,12 +21,12 @@
     <!-- 使用dubbo发布服务 -->
     <!-- 提供方应用信息，用于计算依赖关系 -->
     <!-- 配置dubbo注解识别处理器，不指定包名的话会在spring bean中查找对应实例的类配置了dubbo注解的 -->
-    <dubbo:application name="portal-web"/>
+    <dubbo:application name="item-web"/>
     <dubbo:registry protocol="zookeeper"
                     address="172.20.10.13:2181"/>
     <!-- 声明需要暴露的服务接口 -->
     <!-- 配置dubbo注解识别处理器，不指定包名的话会在spring bean中查找对应实例的类配置了dubbo注解的 -->
-    <dubbo:reference interface="xyz.maojun.content.service.ContentService" id="contentService"/>
+    <dubbo:reference interface="xyz.maojun.service.ItemService" id="itemService"/>
 
 
 </beans>

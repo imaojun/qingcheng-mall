@@ -15,6 +15,7 @@
         <module>../portal-web</module>
         <module>../search</module>
         <module>../search-web</module>
+        <module>../item-web</module>
     </modules>
 
 
