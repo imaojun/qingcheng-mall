@@ -2,7 +2,10 @@ package xyz.maojun.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.activemq.command.ActiveMQTopic;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 import xyz.maojun.common.pojo.EasyUIDateGridResult;
 import xyz.maojun.common.util.EgouResult;
@@ -14,6 +17,8 @@ import xyz.maojun.pojo.TbItemDesc;
 import xyz.maojun.pojo.TbItemExample;
 import xyz.maojun.service.ItemService;
 
+import javax.annotation.Resource;
+import javax.jms.*;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +29,11 @@ public class ItemServiceImpl implements ItemService {
     private TbItemMapper tbItemMapper;
     @Autowired
     private TbItemDescMapper tbItemDescMapper;
+    @Autowired
+    private JmsTemplate jmsTemplate;
+    @Resource
+    private Destination topicDestination;
+
 
     @Override
     public TbItem getItemById(long itemid) {
@@ -44,14 +54,14 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public EasyUIDateGridResult getItemList(int page, int rows) {
-        PageHelper.startPage(page,rows);
+        PageHelper.startPage(page, rows);
         TbItemExample example = new TbItemExample();
         List<TbItem> list = tbItemMapper.selectByExample(example);
 
         EasyUIDateGridResult result = new EasyUIDateGridResult();
         result.setRows(list);
         PageInfo<TbItem> pageInfo = new PageInfo<>(list);
-        long total= pageInfo.getTotal();
+        long total = pageInfo.getTotal();
         result.setTotal(total);
         return result;
     }
@@ -59,11 +69,11 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public EgouResult addItem(TbItem item, String desc) {
         // 生成商品id
-        long itemId = IDUtils.genItemId();
+        final long itemId = IDUtils.genItemId();
         //补全item属性
         item.setId(itemId);
         //商品状态 1正常 2下架 3删除
-        item.setStatus((byte)1);
+        item.setStatus((byte) 1);
         item.setCreated(new Date());
         item.setUpdated(new Date());
         // 向商品表中插入数据
@@ -74,6 +84,13 @@ public class ItemServiceImpl implements ItemService {
         itemDesc.setCreated(new Date());
         itemDesc.setUpdated(new Date());
         tbItemDescMapper.insert(itemDesc);
+        jmsTemplate.send(topicDestination, new MessageCreator() {
+            @Override
+            public Message createMessage(Session session) throws JMSException {
+                TextMessage textMessage = session.createTextMessage(itemId + "");
+                return textMessage;
+            }
+        });
         return EgouResult.ok();
     }
 }
