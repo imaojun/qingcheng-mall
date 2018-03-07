@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import xyz.maojun.item.pojo.Item;
 import xyz.maojun.pojo.TbItem;
 import xyz.maojun.pojo.TbItemDesc;
-import xyz.maojun.service.ItemService;
+import xyz.maojun.sso.service.ItemService;
 
 @Controller
 public class ItemController {

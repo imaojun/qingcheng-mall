@@ -1,6 +1,5 @@
 package xyz.maojun.item.listener;
 
-import com.sun.java.swing.plaf.windows.WindowsBorders;
 import freemarker.core.ParseException;
 import freemarker.template.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,13 +8,12 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import xyz.maojun.item.pojo.Item;
 import xyz.maojun.pojo.TbItem;
 import xyz.maojun.pojo.TbItemDesc;
-import xyz.maojun.service.ItemService;
+import xyz.maojun.sso.service.ItemService;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.TextMessage;
-import javax.xml.crypto.Data;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
