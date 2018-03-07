@@ -11,12 +11,18 @@
 
     <context:component-scan base-package="xyz.maojun.item.controller"/>
     <!-- 加载配置文件 -->
-    <context:property-placeholder location="classpath:properties/imageurl.properties" />
+    <context:property-placeholder location="classpath:properties/source.properties" />
     <mvc:annotation-driven/>
     <bean
             class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
+    </bean>
+    <!--整合freemarker-->
+    <bean id="freemarkerConfig"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/ftl/" />
+        <property name="defaultEncoding" value="UTF-8" />
     </bean>
     <!-- 使用dubbo发布服务 -->
     <!-- 提供方应用信息，用于计算依赖关系 -->

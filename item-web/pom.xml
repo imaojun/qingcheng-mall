@@ -132,7 +132,11 @@
             <artifactId>freemarker</artifactId>
             <version>${freemarker.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-all</artifactId>
+            <version>${activemq.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
