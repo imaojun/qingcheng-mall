@@ -16,6 +16,10 @@
         <module>../search</module>
         <module>../search-web</module>
         <module>../item-web</module>
+        <module>../sso</module>
+        <module>../sso-web</module>
+        <module>../content</module>
+
     </modules>
 
 
