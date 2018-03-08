@@ -4,11 +4,12 @@ import freemarker.core.ParseException;
 import freemarker.template.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import xyz.maojun.item.pojo.Item;
 import xyz.maojun.pojo.TbItem;
 import xyz.maojun.pojo.TbItemDesc;
-import xyz.maojun.sso.service.ItemService;
+import xyz.maojun.service.ItemService;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
@@ -19,7 +20,6 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
-
 public class HtmlGenListener implements MessageListener{
     @Value("${FREEMARKER_FILE_PATH}")
     private String FREEMARKER_FILE_PATH;
