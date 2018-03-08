@@ -19,6 +19,8 @@
         <module>../sso</module>
         <module>../sso-web</module>
         <module>../content</module>
+        <module>../cart-web</module>
+        <module>../cart</module>
 
     </modules>
 
