@@ -21,6 +21,8 @@
         <module>../content</module>
         <module>../cart-web</module>
         <module>../cart</module>
+        <module>../order</module>
+        <module>../order-web</module>
 
     </modules>
 
