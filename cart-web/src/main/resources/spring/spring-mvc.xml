@@ -18,6 +18,13 @@
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+    <!--拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="xyz.maojun.cart.interceptor.LoginIntercepter"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <!-- 使用dubbo发布服务 -->
     <!-- 提供方应用信息，用于计算依赖关系 -->
@@ -28,6 +35,8 @@
     <!-- 声明需要暴露的服务接口 -->
     <!-- 配置dubbo注解识别处理器，不指定包名的话会在spring bean中查找对应实例的类配置了dubbo注解的 -->
     <dubbo:reference interface="xyz.maojun.service.ItemService" id="itemService"/>
+    <dubbo:reference interface="xyz.maojun.sso.service.TokenService" id="tokenService"/>
+    <dubbo:reference interface="xyz.maojun.cart.service.CartService" id="cartService"/>
 
 
 </beans>

@@ -45,4 +45,9 @@
 		<servlet-name>cart-web</servlet-name>
 		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
+	<!--html json会406 添加action拦截给购物车计算价格ajax-->
+	<servlet-mapping>
+		<servlet-name>cart-web</servlet-name>
+		<url-pattern>*.action</url-pattern>
+	</servlet-mapping>
 </web-app>
