@@ -32,7 +32,7 @@
 
 	<!-- springmvc的前端控制器 -->
 	<servlet>
-		<servlet-name>egou-portal</servlet-name>
+		<servlet-name>egou-order-web</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<!-- contextConfigLocation不是必须的， 如果不配置contextConfigLocation， springmvc的配置文件默认在：WEB-INF/servlet的name+"-servlet.xml" -->
 		<init-param>
@@ -42,7 +42,7 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>egou-portal</servlet-name>
+		<servlet-name>egou-order-web</servlet-name>
 		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
 </web-app>

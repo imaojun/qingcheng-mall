@@ -24,7 +24,7 @@
 <script type="text/javascript" src="/js/common.js"></script>
 
 
-   <title>我的购物车 - 宜立方商城</title>
+   <title>我的购物车 - 易购商城</title>
 <body> 
 <jsp:include page="commons/header.jsp" />
 <div class="cartMain">

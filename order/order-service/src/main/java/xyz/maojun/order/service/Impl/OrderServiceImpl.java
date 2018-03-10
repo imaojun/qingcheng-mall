@@ -1,4 +1,4 @@
-package xyz.maojun.order.service.Impl;
+package xyz.maojun.order.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,7 +23,7 @@ public class OrderServiceImpl implements OrderService{
     @Value("${ORDER_ID_START}")
     private String ORDER_ID_START;
     @Value("${ORDER_DETAIL_ID_GEN_KEY}")
-    private String ORDER_DETAIL_ID_GEN;
+    private String ORDER_DETAIL_ID_GEN_KEY;
     @Autowired
     private TbOrderMapper orderMapper;
 
@@ -48,7 +48,7 @@ public class OrderServiceImpl implements OrderService{
         orderMapper.insert(orderInfo);
         List<TbOrderItem> orderItems = orderInfo.getOrderItems();
         for (TbOrderItem orderItem : orderItems) {
-            String odId = jedisClient.incr(ORDER_DETAIL_ID_GEN).toString();
+            String odId = jedisClient.incr(ORDER_DETAIL_ID_GEN_KEY).toString();
             orderItem.setId(odId);
             orderItem.setOrderId(orderId);
             tbOrderItemMapper.insert(orderItem);
