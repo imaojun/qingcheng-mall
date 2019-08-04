@@ -1,6 +1,7 @@
 # Compiled class file
 *.class
 
+
 # Log file
 *.log
 
@@ -35,6 +36,8 @@ target/
 # idea
 .idea/
 /idea/
+.attach_pid19557
+
 *.ipr
 *.iml
 *.iws
