@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>品牌管理</title>
+    <link rel="stylesheet" href="../css/elementui.css">
+</head>
+<body>
+<div id="app">
+    <el-table
+            :data="tableData"
+            stripe
+            style="width: 100%">
+        <el-table-column
+                prop="id"
+                label="ID">
+<!--                width="180">-->
+        </el-table-column>
+        <el-table-column
+                prop="name"
+                label="名称">
+<!--                width="180">-->
+        </el-table-column>
+        <el-table-column
+                prop="letter"
+                label="首字母">
+        </el-table-column>
+        <el-table-column
+                label="图片">
+            <template slot-scope="scope" >
+                <img :src="scope.row.image">
+            </template>
+        </el-table-column>
+    </el-table>
+
+    <el-pagination
+            @size-change="fetchData"
+            @current-change="fetchData"
+            :current-page="currentPage"
+            :page-sizes="[10, 20, 30, 40]"
+            :page-size="size"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="total">
+    </el-pagination>
+</div>
+
+
+<script src="../js/vue.js"></script>
+<script src="../js/elementui.js"></script>
+<script src="../js/axios.js"></script>
+<script>
+    new Vue({
+        el: "#app",
+        data() {
+            return {
+                tableData: [],
+                currentPage:1,
+                sie:20,
+                total:100
+            }
+        },
+        created() {
+            axios.get('/brand/findAll.do').then((response) => {
+                this.tableData = response.data
+            })
+        },
+        method:{
+            fetchData(){
+
+            }
+        }
+    })
+
+</script>
+
+
+</body>
+</html>
