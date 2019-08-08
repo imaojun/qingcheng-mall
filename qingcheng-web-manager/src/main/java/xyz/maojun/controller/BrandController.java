@@ -51,7 +51,6 @@ public class BrandController {
     @PostMapping("/add")
     public Result add(@RequestBody Brand brand) {
         brandService.add(brand);
-        int a = 1 / 0;
         return new Result();
     }
 
