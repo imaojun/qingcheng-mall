@@ -4,6 +4,34 @@
     <meta charset="UTF-8">
     <title>品牌管理</title>
     <link rel="stylesheet" href="../css/elementui.css">
+    <style>
+        .avatar-uploader .el-upload {
+            border: 1px dashed #d9d9d9;
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .avatar-uploader .el-upload:hover {
+            border-color: #409EFF;
+        }
+
+        .avatar-uploader-icon {
+            font-size: 28px;
+            color: #8c939d;
+            width: 178px;
+            height: 178px;
+            line-height: 178px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 178px;
+            height: 178px;
+            display: block;
+        }
+    </style>
 </head>
 <body>
 <div id="app">
@@ -41,7 +69,7 @@
         <el-table-column
                 label="图片">
             <template slot-scope="scope">
-                <img :src="scope.row.image">
+                <img width="100px" height="50px" :src="scope.row.image">
             </template>
         </el-table-column>
         <el-table-column
@@ -83,7 +111,15 @@
                 <el-input v-model="pojo.letter" placeholder="品牌首字母"></el-input>
             </el-form-item>
             <el-form-item label="品牌图片">
-                <el-input v-model="pojo.image" placeholder="品牌图片"></el-input>
+                <el-upload
+                        class="avatar-uploader"
+                        action="/upload/oss.do?space=brand"
+                        :show-file-list="false"
+                        :on-success="handleAvatarSuccess"
+                        :before-upload="beforeAvatarUpload">
+                    <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                </el-upload>
             </el-form-item>
             <el-form-item label="品牌排序">
                 <el-input v-model="pojo.sort" placeholder="品牌排序"></el-input>
@@ -113,7 +149,8 @@
                 total: 10,
                 searchMap: {},
                 formVisible: false,
-                pojo: {}
+                pojo: {},
+                imageUrl:""
             }
         },
         created() {
@@ -127,15 +164,17 @@
                 })
             },
             save() {
+                this.pojo.image = this.imageUrl;
                 axios.post(`/brand/${this.pojo.id == null ? 'add' : 'update'}.do`, this.pojo).then(res => {
-                    this.formVisible = false
-                    this.fetchData()
+                    this.formVisible = false;
+                    this.fetchData();
                 })
             },
             edit(id) {
-                this.formVisible = true
+                this.formVisible = true;
                 axios.get(`/brand/findById.do?id=${id}`).then(res => {
-                    this.pojo = res.data
+                    this.pojo = res.data;
+                    this.imageUrl = this.pojo.image;
                 })
             },
             dele(id) {
@@ -156,6 +195,22 @@
                         message: '已取消删除'
                     });
                 });
+            },
+            handleAvatarSuccess(res, file) {
+                // this.imageUrl = URL.createObjectURL(file.raw); //image preview,save in memeroy reload will lose
+                this.imageUrl = file.response;
+            },
+            beforeAvatarUpload(file) {
+                const isJPG = file.type === 'image/jpeg';
+                const isLt2M = file.size / 1024 / 1024 < 2;
+
+                if (!isJPG) {
+                    this.$message.error('上传头像图片只能是 JPG 格式!');
+                }
+                if (!isLt2M) {
+                    this.$message.error('上传头像图片大小不能超过 2MB!');
+                }
+                return isJPG && isLt2M;
             }
         }
     })
