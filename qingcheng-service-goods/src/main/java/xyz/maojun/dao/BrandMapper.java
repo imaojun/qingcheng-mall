@@ -5,3 +5,5 @@ import xyz.maojun.pojo.goods.Brand;
 
 public interface BrandMapper extends Mapper<Brand> {
 }
+
+

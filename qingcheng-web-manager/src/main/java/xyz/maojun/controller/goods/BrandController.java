@@ -1,4 +1,4 @@
-package xyz.maojun.controller;
+package xyz.maojun.controller.goods;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.*;
