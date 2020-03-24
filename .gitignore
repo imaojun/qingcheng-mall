@@ -1,54 +1,5 @@
-# Compiled class file
-*.class
-
-
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-
-# kdiff3 
-*.orig
-
-# maven 
-target/
-
-# eclipse 
-.settings/
-.project
-.classpath
-
 # idea
-.idea/
-/idea/
-.attach_pid19557
-
-*.ipr
+.idea
 *.iml
-*.iws
+target
 
-# temp files
-*.cache
-*.cache
-*.diff
-*.patch
-*.tmp
-
-# system 
-.DS_Store
-Thumbs.db
