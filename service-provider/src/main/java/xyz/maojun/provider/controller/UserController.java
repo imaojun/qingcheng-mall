@@ -15,7 +15,7 @@ import xyz.maojun.provider.service.UserService;
  */
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/getUser")
 public class UserController {
 
     @Autowired
