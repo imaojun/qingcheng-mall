@@ -6,7 +6,14 @@
 
     <groupId>xyz.maojun</groupId>
     <artifactId>springboot-vue-mall</artifactId>
+    <packaging>pom</packaging>
     <version>1.0</version>
+
+    <modules>
+        <module>sbv-registry</module>
+        <module>sbv-gateway</module>
+        <module>sbv-item</module>
+    </modules>
 
 
     <name>springboot-vue-mall</name>
@@ -27,7 +34,7 @@
         <mybatis.starter.version>1.3.2</mybatis.starter.version>
         <mapper.starter.version>2.0.2</mapper.starter.version>
         <druid.starter.version>1.1.9</druid.starter.version>
-        <mysql.version>5.1.32</mysql.version>
+        <mysql.version>6.0.6</mysql.version>
         <mybatis-plus.version>3.3.1.tmp</mybatis-plus.version>
         <fastDFS.client.version>1.26.1-RELEASE</fastDFS.client.version>
     </properties>

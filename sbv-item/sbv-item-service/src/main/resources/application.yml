@@ -1,0 +1,22 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: item-service
+  datasource:
+    url: jdbc:mysql://localhost:3307/springboot_vue_mall?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123456
+
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+  instance:
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+#
+#mybatis:
+#  type-aliases-package: xyz.maojun.item.pojo
