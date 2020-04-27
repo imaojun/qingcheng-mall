@@ -13,6 +13,7 @@
         <module>sbv-registry</module>
         <module>sbv-gateway</module>
         <module>sbv-item</module>
+        <module>sbv-common</module>
     </modules>
 
 
