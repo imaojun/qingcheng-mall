@@ -5,10 +5,13 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import xyz.maojun.item.mapper.BrandMapper;
 import xyz.maojun.item.service.BrandService;
 import xyz.maojun.pojo.Brand;
 import xyz.maojun.pojo.PageResult;
+
+import java.util.List;
 
 /**
  * @Description:
@@ -33,9 +36,9 @@ public class BrandServiceImpl implements BrandService {
             brandQueryWrapper.like("name", "%" + key + "%").or().eq("letter", key);
         }
 
-       if (StringUtils.isNotBlank(soryBy)){
-           brandQueryWrapper.orderBy(true, desc,soryBy);
-       }
+        if (StringUtils.isNotBlank(soryBy)) {
+            brandQueryWrapper.orderBy(true, desc, soryBy);
+        }
 
 
         brandQueryWrapper.setEntity(brand);
@@ -43,6 +46,20 @@ public class BrandServiceImpl implements BrandService {
 
         Page<Brand> brandPage = this.brandMapper.selectPage(pageBrand, brandQueryWrapper);
 
+
         return new PageResult<Brand>(brandPage.getTotal(), brandPage.getRecords());
+    }
+
+    @Override
+    @Transactional
+    public void saveBrand(Brand brand, List<Long> cids) {
+
+        this.brandMapper.insert(brand);
+
+        cids.forEach(cid -> {
+            this.brandMapper.insertCategoryAndBrand(cid, brand.getId());
+        });
+
+
     }
 }

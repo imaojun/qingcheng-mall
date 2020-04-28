@@ -14,15 +14,12 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@RequiredArgsConstructor
 public class PageResult<T> {
-
+    @NonNull
     private Long total;
     private Integer totalPage;
+    @NonNull
     private List<T> items;
 
-
-    public PageResult(Long total, List<T> items) {
-        this.total = total;
-        this.items = items;
-    }
 }
