@@ -13,3 +13,12 @@ eureka:
   instance:
     lease-renewal-interval-in-seconds: 5
     lease-expiration-duration-in-seconds: 15
+
+fdfs:
+  so-timeout: 1501
+  connect-timeout: 601
+  thumb-image:
+    width: 60
+    height: 60
+  tracker-list: # tracker address
+    - 192.168.8.105:22122

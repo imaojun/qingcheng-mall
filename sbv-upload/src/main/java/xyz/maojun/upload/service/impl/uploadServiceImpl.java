@@ -1,14 +1,17 @@
 package xyz.maojun.upload.service.impl;
 
+import com.github.tobato.fastdfs.domain.fdfs.StorePath;
+import com.github.tobato.fastdfs.service.FastFileStorageClient;
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import xyz.maojun.upload.service.UploadService;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -23,6 +26,10 @@ public class uploadServiceImpl implements UploadService {
 
     public static final List<String> FILE_TYPE = Arrays.asList("image/jpeg","image/jpg");
     public static final Logger LOGGER = LoggerFactory.getLogger(uploadServiceImpl.class);
+
+
+    @Autowired
+    private FastFileStorageClient fastFileStorageClient;
 
     @Override
     public String uploadImae(MultipartFile file) {
@@ -43,9 +50,10 @@ public class uploadServiceImpl implements UploadService {
                 return null;
             }
 
-            file.transferTo(new File("/home/maojun/app/nginx/html/" + originalFilename));
+            String ext = StringUtils.substringAfterLast(originalFilename, ".");
+            StorePath storePath = this.fastFileStorageClient.uploadFile(file.getInputStream(), file.getSize(), ext, null);
 
-            return "http://image.leyou.com/" + originalFilename;
+            return "http://image.leyou.com/" + storePath.getFullPath();
 
         } catch (IOException e) {
             LOGGER.error("图片上传出错: {}",originalFilename);
