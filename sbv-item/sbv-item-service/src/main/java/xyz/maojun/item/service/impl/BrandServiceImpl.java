@@ -41,7 +41,7 @@ public class BrandServiceImpl implements BrandService {
         }
 
 
-        brandQueryWrapper.setEntity(brand);
+        // brandQueryWrapper.setEntity(brand);
 
 
         Page<Brand> brandPage = this.brandMapper.selectPage(pageBrand, brandQueryWrapper);
