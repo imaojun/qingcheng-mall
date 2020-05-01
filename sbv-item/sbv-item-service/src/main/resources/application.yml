@@ -20,3 +20,10 @@ eureka:
 
 mybatis:
   type-aliases-package: xyz.maojun.item.pojo
+
+logging:
+  level:
+    xyz:
+      maojun:
+        item:
+          mapper: debug
